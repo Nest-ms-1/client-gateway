@@ -6,6 +6,8 @@ import { RpcCustomExceptionFilter } from './common/exceptions/rpc-custom-excepti
 
 async function bootstrap() {
   const logger = new Logger('Main-gateway')
+
+  console.log('hola mundo 8')
   const app = await NestFactory.create(AppModule)
   app.setGlobalPrefix('api')
   app.useGlobalPipes(
