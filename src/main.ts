@@ -7,7 +7,6 @@ import { RpcCustomExceptionFilter } from './common/exceptions/rpc-custom-excepti
 async function bootstrap() {
   const logger = new Logger('Main-gateway')
 
-  console.log('hola mundo 8')
   const app = await NestFactory.create(AppModule)
   app.setGlobalPrefix('api')
   app.useGlobalPipes(
@@ -19,6 +18,8 @@ async function bootstrap() {
 
   app.useGlobalFilters(new RpcCustomExceptionFilter())
   await app.listen(envs.port)
+
+  console.log('hola mundo primer cambio')
 
   logger.log(`Gateway running on http://localhost:${envs.port}`)
 }
