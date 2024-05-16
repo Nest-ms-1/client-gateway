@@ -1,5 +1,5 @@
 import 'dotenv/config'
-import * as Joi from 'joi'
+import * as joi from 'joi'
 
 interface EnvVars {
   PORT: number
@@ -7,11 +7,13 @@ interface EnvVars {
   NATS_SERVERS: string[]
 }
 
-const envsSchema = Joi.object({
-  PORT: Joi.number().required(),
+const envsSchema = joi
+  .object({
+    PORT: joi.number().required(),
 
-  NATS_SERVERS: Joi.array().items(Joi.string()).required(),
-}).unknown(true)
+    NATS_SERVERS: joi.array().items(joi.string()).required(),
+  })
+  .unknown(true)
 
 const { error, value } = envsSchema.validate({
   ...process.env,
@@ -21,9 +23,11 @@ const { error, value } = envsSchema.validate({
 if (error) {
   throw new Error(`Config validation error: ${error.message}`)
 }
-const envsVars: EnvVars = value
-export const envs = {
-  port: envsVars.PORT,
 
-  nastsServers: envsVars.NATS_SERVERS,
+const envVars: EnvVars = value
+
+export const envs = {
+  port: envVars.PORT,
+
+  natsServers: envVars.NATS_SERVERS,
 }

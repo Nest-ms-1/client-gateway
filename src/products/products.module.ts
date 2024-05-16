@@ -9,9 +9,9 @@ import { ProductsController } from './products.controller'
     NatsModule,
     // ClientsModule.register([
     //   {
-    //     name: NAST_SERVICE,
+    //     name: NATS_SERVICE,
     //     transport: Transport.NATS,
-    //     options: envs.nastsServers,
+    //     options: envs.natsServers,
     //   },
     // ]),
   ],
